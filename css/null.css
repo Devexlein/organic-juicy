@@ -97,18 +97,19 @@ html:focus-within {
    scroll-behavior: smooth;
 }
 
-body {
-   /* критерии WCAG для «основного» текста (см. стр.11) */
-   line-height: 1.5;
-   /* Улучшить рендеринг текста (отключаем субпиксельное сглаживание в Chrome и Safari) */
-   -webkit-font-smoothing: antialiased;
+/* body { */
+/* критерии WCAG для «основного» текста (см. стр.11) */
+/* line-height: 1.5; */
+/* Улучшить рендеринг текста (отключаем субпиксельное сглаживание в Chrome и Safari) */
+/* -webkit-font-smoothing: antialiased;
 
-   /* padding: 0px 15px;
+   padding: 0px 15px;
    font-family: 'Roboto', sans-serif;
    font-size: 16px;
    background-color: rgb(247, 239, 233);
-   color: #2e2f34; */
-}
+   color: #2e2f34;
+} */
+
 
 /* body._lock {
    overflow: hidden;
