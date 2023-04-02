@@ -1,0 +1,128 @@
+/* Обнуление и общие стили */
+*,
+*::after,
+*::before {
+   padding: 0;
+   margin: 0;
+   border: 0;
+   box-sizing: border-box;
+}
+
+/* Управление высотой строки, но размер шрифта браузера должен быть установлен по умолчанию */
+/* * {
+   line-height: calc(1em + 0.5rem);
+} */
+
+ul[role='list'],
+ol[role='list'] {
+   list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font: inherit;
+   /* Избегаем переполнения текста, разрешаем жесткий перенос */
+   overflow-wrap: break-word;
+}
+
+p {
+   overflow-wrap: break-word;
+   /* используем дефисы */
+   hyphens: auto;
+}
+
+a,
+a:visited,
+a:hover {
+   text-decoration: none;
+}
+
+:focus,
+:active,
+a:focus,
+a:active {
+   outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+   display: block;
+}
+
+input,
+button,
+textarea,
+select {
+   font: inherit;
+}
+
+input::-ms-clear {
+   display: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+   display: block;
+   max-width: 100%;
+}
+
+img {
+   vertical-align: top;
+}
+
+button {
+   cursor: pointer;
+}
+
+button::-moz-focus-inner {
+   padding: 0;
+   border: 0;
+}
+
+html,
+body {
+   height: 100%;
+}
+
+html:focus-within {
+   scroll-behavior: smooth;
+}
+
+body {
+   /* критерии WCAG для «основного» текста (см. стр.11) */
+   line-height: 1.5;
+   /* Улучшить рендеринг текста (отключаем субпиксельное сглаживание в Chrome и Safari) */
+   -webkit-font-smoothing: antialiased;
+
+   /* padding: 0px 15px;
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   background-color: rgb(247, 239, 233);
+   color: #2e2f34; */
+}
+
+/* body._lock {
+   overflow: hidden;
+} */
+
+/* .wrapper {
+   min-height: 100%;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+} */
+
+/* [class*="__container"] {
+   max-width: 1190px;
+   margin: 0 auto;
+   padding: 0px 15px;
+} */
