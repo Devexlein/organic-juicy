@@ -17,20 +17,23 @@
    --supportive-text-color: #9e9e9e;
 
    --main-color: #fff;
-   --hover-main-color: rgba(255, 255, 255, 0.2);
+   --nofocus-main-color: rgba(255, 255, 255, 0.8);
    --active-main-color: rgba(255, 255, 255, 0.4);
    --secondary-color: #000;
    --hover-secondary-color: rgba(0, 0, 0, 0.7);
-   --accent-color: #01bcb5;
-   --hover-accent-color: rgb(1, 188, 181, 1);
-   --active-accent-color: #009090;
+   --accent-color: #02cbc4;
+   --hover-accent-color: #00eae0;
+   --active-accent-color: #02b1b1;
    --active-color: #FF4747;
    --hover-active-color: rgba(255, 71, 71, 0.6);
 
    --red-bg: #FF4747;
-   --orange-bg: #FFB548;
+   --orange-bg: #ffba4a;
    --light-green-bg: #bee163;
    --verdigris-bg: #00c1b9;
+   --verdigris-bg: #00c2ba;
+   --light-grey-bg: #999;
+   --grey-bg: #6a6a6a;
    --dark-grey-bg: #2F2F2F;
    --active-bg: #bc0108;
    --hover-active-bg: rgba(188, 1, 7, 0.5);
@@ -93,12 +96,86 @@ body {
    transition: opacity 0.2s;
 }
 
+.btn_rounded {
+   border-radius: 24px;
+}
+
 .half-transparent:hover {
    opacity: 0.8;
 }
 
 .half-transparent:active {
    opacity: 0.6;
+}
+
+.title {
+   font-family: 'Fira Sans Condensed', sans-serif;
+   font-size: 1.7rem;
+   line-height: 1.1;
+   letter-spacing: 2px;
+   width: 10.7rem;
+}
+
+.title span {
+   font-size: 4.7rem;
+   display: block;
+}
+
+.title span::first-line {
+   font-weight: 900;
+}
+
+.description {
+   max-width: 90%;
+}
+
+.common {
+   padding: var(--gutter-section-xlg) var(--gutter-section-sm) var(--gutter-section-xlg) var(--gutter-section-lg);
+   display: flex;
+   gap: var(--gutter-el-xlg, 3rem);
+}
+
+.common_column-revers {
+   flex-direction: column-reverse;
+}
+
+.common_row-revers {
+   flex-direction: row-reverse;
+}
+
+.logo {
+   font-family: 'Secular One', sans-serif;
+   color: var(--active-color);
+   font-size: 1.7rem;
+   width: var(--container-logo);
+   line-height: 1;
+   transition: color 0.3s ease-in;
+}
+
+.logo:hover {
+   color: var(--active-bg);
+}
+
+.logo-image {
+   justify-self: center;
+   fill: var(--light-grey-bg);
+   transition: transform 0.6s;
+}
+
+.logo-image:hover {
+   transform: scale(1.5) translateX(10px) rotate(360deg);
+}
+
+#orange:hover {
+   fill: var(--orange-bg);
+}
+
+#light-green:hover {
+   fill: var(--light-green-bg);
+}
+
+#red:hover {
+   fill: var(--red-bg);
 }
 
 /* ======= HEADER ===================================================================================== */
@@ -116,19 +193,8 @@ body {
    overflow: hidden;
 }
 
-.logo {
+.header__logo {
    grid-area: logo;
-
-   font-family: 'Secular One', sans-serif;
-   color: var(--active-color);
-   font-size: 1.7rem;
-   width: var(--container-logo);
-   line-height: 1;
-   transition: color 0.3s ease-in;
-}
-
-.logo:hover {
-   color: var(--active-bg);
 }
 
 .header__nav {
@@ -248,9 +314,7 @@ body {
 }
 
 /* .slider-arrows__arrow_prev {}
-
 .slider-arrows__btn {}
-
 .slider-arrows__arrow_next {} */
 /* ======= FRESHY ===================================================================================== */
 .freshy {
@@ -258,47 +322,11 @@ body {
    background-color: var(--light-green-bg);
 }
 
-.common {
-   padding: var(--gutter-section-xlg) var(--gutter-section-sm) var(--gutter-section-xlg) var(--gutter-section-lg);
-   display: flex;
-   gap: var(--gutter-el-xlg, 3rem);
-}
-
-.common_column-revers {
-   flex-direction: column-reverse;
-}
-
-.common_row-revers {
-   flex-direction: row-reverse;
-}
-
-.freshy__title {}
-
-.title {
-   font-family: 'Fira Sans Condensed', sans-serif;
-   font-size: 1.7rem;
-   line-height: 1.1;
-   letter-spacing: 2px;
-   width: 10.7rem;
-}
-
-.title span {
-   font-size: 4.7rem;
-   display: block;
-}
-
-.title span::first-line {
-   font-weight: 900;
-}
-
-.description {
-   max-width: 90%;
-}
+/* .freshy__title {} */
 
 .freshy__description {
    max-width: 60%;
 }
-
 
 /* ======= HEALTHY ===================================================================================== */
 
@@ -307,9 +335,8 @@ body {
    background-color: var(--red-bg);
 }
 
-.healthy__title {}
-
-.healthy__description {}
+/* .healthy__title {}
+.healthy__description {} */
 
 /* ======= THIRSTY ===================================================================================== */
 
@@ -317,7 +344,6 @@ body {
    grid-area: thirsty;
    background-color: var(--orange-bg);
    justify-content: center;
-
 }
 
 .thirsty__title {
@@ -408,7 +434,6 @@ body {
 }
 
 /* .card-image__btn {}
-
 .card-image__nav {} */
 
 .card-image__arrow {
@@ -418,3 +443,108 @@ body {
    transform: translateX(-50%);
    fill: var(--main-color);
 }
+
+/* ======= FOOTER ===================================================================================== */
+.footer-row {
+   background-color: var(--dark-grey-bg);
+   display: grid;
+   grid-template: "footer juisy" 4fr / 4.4fr 1.6fr;
+}
+
+.footer {
+   grid-area: footer;
+   display: grid;
+   grid-template: ". socials form logo" max-content
+      ". . . copy" 100px / 0.9fr 1.1fr 1.4fr 1fr;
+   align-items: flex-end;
+   align-content: center;
+}
+
+.socials {
+   grid-area: socials;
+   display: flex;
+   gap: var(--gutter-el-sm, 15px);
+}
+
+.socials__link {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 44px;
+   height: 44px;
+   fill: var(--primary-text-color);
+   border: 1px solid var(--primary-text-color);
+   border-radius: 50%;
+}
+
+.form {
+   grid-area: form;
+   text-transform: uppercase;
+}
+
+.form__title {
+   font-size: 1.4rem;
+   letter-spacing: 2px;
+   margin-bottom: var(--gutter-el-m);
+}
+
+.form__row {
+   display: flex;
+}
+
+.form__input {
+   width: 60%;
+   height: 40px;
+   padding: 0 var(--gutter-el-m);
+   background-color: var(--nofocus-main-color);
+   text-transform: uppercase;
+}
+
+.form__input:focus {
+   background-color: var(--main-color);
+}
+
+.form__submit-btn {
+   height: 40px;
+   padding: 0 var(--gutter-el-m);
+   color: var(--primary-text-color);
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   background-color: var(--verdigris-bg);
+   transition: background-color 0.3s;
+}
+
+.form__submit-btn:hover {
+   background-color: var(--hover-accent-color);
+}
+
+.form__submit-btn:active {
+   background-color: var(--active-accent-color);
+}
+
+.footer__logo {
+   grid-area: logo;
+}
+
+.copy {
+   grid-area: copy;
+   align-self: center;
+   justify-self: center;
+   color: var(--grey-bg);
+}
+
+/* ======= JUISY ===================================================================================== */
+.juisy {
+   grid-area: juisy;
+   background-color: var(--verdigris-bg);
+}
+
+/* .juisy__title {}
+.juisy__content {} */
+
+.juisy__description {
+   margin-bottom: var(--gutter-el-lg);
+}
+
+/* .juisy__btn-wrapper {}
+.juisy__btn {} */
