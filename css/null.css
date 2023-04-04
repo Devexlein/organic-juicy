@@ -89,7 +89,8 @@ button::-moz-focus-inner {
    border: 0;
 }
 
-html {
+html,
+body {
    height: 100%;
 }
 
