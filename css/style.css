@@ -690,10 +690,6 @@ body {
    .thirsty__description {
       max-width: 70%;
    }
-
-   .freshy__title {
-      min-width: auto;
-   }
 }
 
 /* 1330px */
@@ -875,6 +871,10 @@ body {
    .thirsty.common,
    .juisy.common {
       padding: var(--gutter-section-m) var(--gutter-section-lg) var(--gutter-section-m) var(--gutter-section-lg);
+   }
+
+   .freshy__title {
+      min-width: auto;
    }
 
    .thirsty__title {
