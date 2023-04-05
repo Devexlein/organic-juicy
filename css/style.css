@@ -199,6 +199,11 @@ body {
    margin: 0 auto;
 }
 
+/* если нужно запретить скролл при открытии меню */
+/* .no-scroll {
+   overflow: hidden;
+} */
+
 .btn {
    font-size: 1.14rem;
    color: var(--primary-text-color);
@@ -362,7 +367,7 @@ body {
    padding: 10px;
    fill: var(--secondary-color);
    background-color: var(--main-color);
-   transition: fill 0.3s ease;
+   transition: fill 0.3s;
 }
 
 .search__icon:hover {
@@ -371,6 +376,64 @@ body {
 
 .search__icon:active {
    fill: var(--active-accent-color);
+}
+
+/* ======= BURGER-MENU ===================================================================================== */
+.menu-icon {
+   display: none;
+   width: 40px;
+   height: 27px;
+   background-color: transparent;
+
+   position: relative;
+}
+
+.menu-icon__line,
+.menu-icon::after,
+.menu-icon::before {
+   display: block;
+   width: 100%;
+   height: 3px;
+   background-color: var(--text-color);
+}
+
+.menu-icon::after,
+.menu-icon::before {
+   content: "";
+   position: absolute;
+   left: 0;
+}
+
+.menu-icon::before {
+   top: 0;
+   transition: transform 0.3s, top 0.3s 0.2s;
+}
+
+.menu-icon::after {
+   bottom: 0;
+   transition: transform 0.3s, bottom 0.3s 0.2s;
+}
+
+.menu-icon__line {
+   transform: scale(1);
+   transition: transform 0.3s ease-in 0.2s;
+}
+
+.menu-icon_active .menu-icon__line {
+   transform: scale(0);
+   transition: transform 0.3s ease-in;
+}
+
+.menu-icon_active::before {
+   transform: rotate(-45deg) translateY(-50%);
+   top: 50%;
+   transition: top 0.3s, transform 0.3s 0.2s;
+}
+
+.menu-icon_active::after {
+   transform: rotate(45deg) translateY(50%);
+   bottom: 50%;
+   transition: bottom 0.3s, transform 0.3s 0.2s;
 }
 
 /* ======= WRAP-BOX ===================================================================================== */
@@ -406,7 +469,10 @@ body {
    display: flex;
 }
 
-/* .slider-arrows__item {} */
+.slider-arrows__item {
+   width: 100%;
+   height: 100%;
+}
 
 .slider-arrows__nav {
    position: absolute;
@@ -505,6 +571,7 @@ body {
 .slider-dots__item {
    vertical-align: middle;
    width: 100%;
+   height: 100%;
 }
 
 .slider-dots__btn-wrapper {
@@ -843,7 +910,29 @@ body {
 @media (max-width: 50rem) {
    .header {
       padding: var(--gutter-section-sm) var(--gutter-section-lg);
-      grid-template: "logo nav search" max-content / 1fr 1fr 1fr;
+      grid-template-columns: max-content 1fr max-content;
+      grid-template-areas: "logo search menu-icon";
+   }
+
+   .header_mobile {
+      /* если меню не поместилось на экран, разрешаем скролл */
+      min-height: 100vh;
+      overflow: hidden;
+      grid-template: "logo menu-icon" max-content
+         "nav nav" max-content
+         "search search";
+      align-content: space-between;
+   }
+
+   .header_mobile .header__nav,
+   .header_mobile .search {
+      display: block;
+      justify-self: center;
+      margin-bottom: var(--gutter-el-xlg);
+   }
+
+   .header_mobile .search {
+      margin-right: 0;
    }
 
    .header__logo {
@@ -852,11 +941,54 @@ body {
 
    .header__nav {
       display: none;
+      transform: none;
+   }
+
+   .header__nav a {
+      font-size: 1.5rem;
+   }
+
+   .header__nav ul {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .header__nav ul>li+li {
+      margin-top: var(--gutter-el-xlg);
+   }
+
+   .header__nav a::after {
+      /* display: none; */
+      opacity: 0;
+      height: 50%;
+      bottom: 5%;
+      z-index: -1;
+      transition: background-color 0.3s, transform 0.3s ease-in, opacity 0.3s ease-in;
+   }
+
+   .header__nav a:hover::after {
+      height: 50%;
+      bottom: 5%;
+      transform: translate(10%, 50%);
+      opacity: 1;
    }
 
    .search {
+      display: none;
+      justify-self: end;
+      margin-right: var(--gutter-el-lg);
+   }
+
+   .search__icon {
+      padding: 3px;
+   }
+
+   .menu-icon {
+      grid-area: menu-icon;
+      display: block;
       justify-self: end;
    }
+
 }
 
 /* 602px */
@@ -956,6 +1088,9 @@ body {
 
 /* 406px */
 @media (max-width: 29rem) {
+   /* .search {
+      display: none;
+   } */
 
    .healthy__description,
    .thirsty__description {

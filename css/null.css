@@ -81,6 +81,8 @@ img {
 }
 
 button {
+   /* убираем голубоватый фон при клике */
+   /* -webkit-tap-highlight-color: transparent; */
    cursor: pointer;
 }
 
