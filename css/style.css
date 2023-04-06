@@ -328,6 +328,7 @@ body {
 /* ======= HEADER ===================================================================================== */
 .header {
    display: grid;
+   grid-template: ". logo nav search" -webkit-max-content / 2fr 1fr 2.6fr 0.4fr;
    grid-template: ". logo nav search" max-content / 2fr 1fr 2.6fr 0.4fr;
    align-items: center;
    justify-items: start;
@@ -604,9 +605,20 @@ body {
    width: 100%;
 }
 
-/* .slider-arrows__item,
+.slider-arrows__item,
 .slider-dots__item {
+   -webkit-animation: fade 1s;
    animation: fade 1s;
+}
+
+@-webkit-keyframes fade {
+   from {
+      opacity: 0.3;
+   }
+
+   to {
+      opacity: 1;
+   }
 }
 
 @keyframes fade {
@@ -617,7 +629,7 @@ body {
    to {
       opacity: 1;
    }
-} */
+}
 
 .slider-dots__btn-wrapper {
    position: absolute;
@@ -696,6 +708,8 @@ body {
    grid-area: footer;
    background-color: var(--dark-grey-bg);
    display: grid;
+   grid-template: ". socials form logo" -webkit-max-content
+      ". . . copy" 100px / 0.9fr 1.1fr 1.4fr 1fr;
    grid-template: ". socials form logo" max-content
       ". . . copy" 100px / 0.9fr 1.1fr 1.4fr 1fr;
    align-items: flex-end;
@@ -823,6 +837,8 @@ body {
    }
 
    .footer {
+      grid-template: "socials form logo" -webkit-max-content
+         " . . copy" 100px / 1.2fr 1.5fr 0.8fr;
       grid-template: "socials form logo" max-content
          " . . copy" 100px / 1.2fr 1.5fr 0.8fr;
       padding: var(--gutter-section-xlg) var(--gutter-section-sm) var(--gutter-section-xlg) var(--gutter-section-lg);
@@ -832,6 +848,7 @@ body {
 /* 1204px */
 @media (max-width: 86rem) {
    .header {
+      grid-template: "logo nav search" -webkit-max-content / 1fr 3fr 0.4fr;
       grid-template: "logo nav search" max-content / 1fr 3fr 0.4fr;
    }
 
@@ -904,6 +921,8 @@ body {
    }
 
    .footer {
+      grid-template: "socials form logo" -webkit-max-content
+         " . copy copy" 50px / 1.5fr 2fr 0.7fr;
       grid-template: "socials form logo" max-content
          " . copy copy" 50px / 1.5fr 2fr 0.7fr;
    }
@@ -957,6 +976,7 @@ body {
 @media (max-width: 50rem) {
    .header {
       padding: var(--gutter-section-sm) var(--gutter-section-lg);
+      grid-template-columns: -webkit-max-content 1fr -webkit-max-content;
       grid-template-columns: max-content 1fr max-content;
       grid-template-areas: "logo search menu-icon";
    }
@@ -965,6 +985,9 @@ body {
       /* если меню не поместилось на экран, разрешаем скролл */
       min-height: 100vh;
       overflow: hidden;
+      grid-template: "logo menu-icon" -webkit-max-content
+         "nav nav" -webkit-max-content
+         "search search";
       grid-template: "logo menu-icon" max-content
          "nav nav" max-content
          "search search";
